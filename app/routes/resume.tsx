@@ -42,7 +42,30 @@ const Resume = () => {
             const imageUrl = URL.createObjectURL(imageBlob);
             setImageUrl(imageUrl);
 
-            setFeedback(data.feedback);
+           setFeedback({
+  overallScore: data.feedback?.overallScore ?? 0,
+  ATS: {
+    score: data.feedback?.ATS?.score ?? 0,
+    tips: data.feedback?.ATS?.tips ?? [],
+  },
+  toneAndStyle: {
+    score: data.feedback?.toneAndStyle?.score ?? 0,
+    tips: data.feedback?.toneAndStyle?.tips ?? [],
+  },
+  content: {
+    score: data.feedback?.content?.score ?? 0,
+    tips: data.feedback?.content?.tips ?? [],
+  },
+  structure: {
+    score: data.feedback?.structure?.score ?? 0,
+    tips: data.feedback?.structure?.tips ?? [],
+  },
+  skills: {
+    score: data.feedback?.skills?.score ?? 0,
+    tips: data.feedback?.skills?.tips ?? [],
+  },
+});
+
             console.log({resumeUrl, imageUrl, feedback: data.feedback });
         }
 
